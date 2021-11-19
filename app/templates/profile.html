@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h4 class="m-0">{{title}}</h4>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+<!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="card">
+            <div class="card-body p-0 pt-3">
+                <style>
+                  #main-profile-tab li:nth-child(1) {
+                    margin-left: 15px!important;
+                  }
+                </style>
+                <ul class="nav nav-tabs" id="main-profile-tab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#biodatadiri" role="tab" aria-controls="home" aria-selected="true"><i class="fa mr-2 fa-user-alt"></i>Biodata Diri</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#riwpendidikan" role="tab" aria-controls="profile" aria-selected="false"><i class="fa mr-2 fa-clipboard-list"></i>Riwayat Pendidikan</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#riwpekerjaan" role="tab" aria-controls="contact" aria-selected="false"><i class="fa mr-2 fa-history"></i>Riwayat Pekerjaan</a>
+                  </li>
+                </ul>
+                <div class="tab-content p-3" id="myTabContent">
+                  <div class="tab-pane fade show active" id="biodatadiri" role="tabpanel" aria-labelledby="biodata-tab">
+                    <h5>ini halaman biodata diri</h5><br/>a<br/>a<br/>a<br/>a<br/>a<br/>a<br/>a<br/>a<br/>a<br/>a<br/>a<br/>a<br/>a<br/>a<br/>a<br/>a
+                  </div>
+                  <div class="tab-pane fade" id="riwpendidikan" role="tabpanel" aria-labelledby="pendidikan-tab">
+                    <h5>ini halaman riwayat Pendidikan</h5>
+                  </div>
+                  <div class="tab-pane fade" id="riwpekerjaan" role="tabpanel" aria-labelledby="pekerjaan-tab">
+                    <h5>test</h5>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+</div>
+
+
+  {% endblock %}

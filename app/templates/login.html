@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Log in</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'plugins/fontawesome-free/css/all.min.css')}}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'dist/css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka%20One">
+</head>
+<style>
+    #login-page {
+        background-image: url("{{ url_for('static', filename= 'dist/img/bg-flat.jpg')}}");
+        background-size: cover;
+    }
+    .login-box-shadow {
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    }
+    .title {
+        font-family: 'Fredoka One'
+    }
+</style>
+<body class="hold-transition login-page" id="login-page">
+<div class="login-box">
+  <div class="card login-box-shadow">
+     <div class="m-2 mt-4 text-center">
+        <h3 class="m-0 title">
+            Master Aplikasi
+        </h3>
+     </div>
+    <div class="card-body pt-1 login-card-body">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+            {% endwith %}
+      <form method="POST" action="/login">
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" name="email" placeholder="Email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" id="password-field" name="password" title="Password" placeholder="Password">
+          <div class="input-group-append">
+            <div class="input-group-text" style="cursor:pointer" id="show-password-button" data-toggle="tooltip" data-placement="top" title="Tampilkan/sembunyikan password">
+                <i id="toggle-password-icon" class="fas fa-eye"></i>
+            </div>
+          </div>
+        </div>
+        <div>
+        <select class="form-control" name="level" style="margin-bottom: 10px;" data-toggle="tooltip" data-placement="bottom" title="Pilih level user">
+            <option value="admin">Admin</option>
+            <option value="pasien">pasien</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            &nbsp;
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="{{ url_for('static', filename= 'plugins/jquery/jquery.min.js')}}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ url_for('static', filename= 'plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{ url_for('static', filename= 'dist/js/adminlte.min.js')}}"></script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+        const showPasswordIcon = 'fas fa-eye'
+        const hidePasswordIcon = 'fas fa-eye-slash'
+        const togglePasswordButton = $('#show-password-button')
+        const passwordField = $('#password-field')
+        const togglePasswordIcon = $('#toggle-password-icon')
+
+        togglePasswordButton.on('click', event => {
+            let getAttribute = passwordField.attr('type')
+            passwordField.attr('type', getAttribute == 'password' ? 'text' : 'password')
+            togglePasswordIcon.attr('class', getAttribute == 'password' ? hidePasswordIcon : showPasswordIcon)
+        })
+    });
+</script>
+</body>
+</html>
